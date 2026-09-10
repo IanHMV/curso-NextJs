@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { HomeIcon } from '@primer/octicons-react'
+import { ActiveLink } from "@/components";
 
 const navItems = [
   { path: "/about", text: "About" },
@@ -25,7 +26,8 @@ export const Navbar = () => {
 
         {
           navItems.map(navItem => (
-            <Link key={navItem.path} className="mr-2 " href={navItem.path}> {navItem.text}</Link>
+            // Podemos utilizar navItem dado a que sabemos que contiene todo lo que necesitamos para cumplir con los valores de "ActiveLink"
+            <ActiveLink key={navItem.path} {...navItem} />
           ))
         }
 
