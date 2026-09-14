@@ -3,19 +3,26 @@ import Image from 'next/image'
 import { IoBrowsers, IoCalculator, IoLogoReact } from "react-icons/io5";
 import { SidebarMenuItem } from '../SidebarMenuItem/SidebarMenuItem';
 import { title } from 'process';
+import { SiIconfinder } from 'react-icons/si';
 
 const menuItems = [
   {
     path: "/dashboard/main",
     icon: <IoBrowsers size={40} />,
     title: "Dashboard",
-    subTitle: "Visualizacion",
+    subTitle: "Visualization",
   },
   {
     path: "/dashboard/counter",
     icon: <IoCalculator size={40} />,
     title: "Counter",
     subTitle: "Counter Client Side",
+  },
+  {
+    path: "/dashboard/pokemons",
+    icon: <SiIconfinder size={40} />,
+    title: "Pokemons",
+    subTitle: "Existing Pokemons",
   }
 ]
 
