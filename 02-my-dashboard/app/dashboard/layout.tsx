@@ -1,15 +1,15 @@
 import React from 'react'
-import { Sidebar } from '../components'
+import { Sidebar } from '../../components'
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="bg-slate-100 overflow-y-scroll w-screen h-screen antialiased text-slate-300 selection:bg-blue-600 selection:text-white">
+    <div className="bg-slate-100 w-full h-screen overflow-hidden antialiased text-slate-300 selection:bg-blue-600 selection:text-white">
 
-      <div className="flex ">
+      <div className="flex h-full">
         <Sidebar />
 
 
-        <div className='p-2 w-full text-slate-900'>
+        <div className='w-full h-full overflow-y-auto text-slate-900'>
           {children}
         </div>
       </div>

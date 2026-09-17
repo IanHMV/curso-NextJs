@@ -1,21 +1,33 @@
+import { PokemonsResponse, SimplePokemons } from "@/pokemons";
+import Image from "next/image";
 
-async function getPokemon() {
+import { PokemonGrid } from "@/pokemons";
+import { notFound } from "next/navigation";
 
-  const data = await fetch('https://pokeapi.co/api/v2/pokemon').then(res => res.json());
+async function getPokemon(limit = 20, offset = 0): Promise<SimplePokemons[]> {
 
-  return data;
+  const data: PokemonsResponse = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${0}`).then(res => res.json());
+
+  const pokemons = data.results.map(pokemon => (
+    {
+      id: Number(pokemon.url.split('/').at(-2)),
+      name: pokemon.name
+    }
+  ))
+
+  return pokemons;
 }
 
-const PokemonsPage = () => {
+export default async function PokemonsPage() {
 
-  const pokemons = getPokemon();
+  const pokemons = await getPokemon(151);
 
-  console.log(pokemons);
   return (
-    <>
+    <div className=" flex flex-col">
+      <span className="text-5xl my-2"><small>Static</small> Pokemon List </span>
 
-    </>
+      <PokemonGrid pokemons={pokemons} />
+
+    </div>
   )
 }
-
-export default PokemonsPage
